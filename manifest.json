@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Auto-Prompt Paster",
+  "version": "2.0",
+  "description": "Paste prompts & auto-setup model resources on CivitAI.",
+
+  "permissions": ["scripting", "activeTab", "tabs"],
+  "host_permissions": ["https://*/*", "http://*/*"],
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}
